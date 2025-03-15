@@ -2,7 +2,6 @@
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows;
-using Wpf.Ui.Controls;
 
 namespace DisplayAudio
 {
