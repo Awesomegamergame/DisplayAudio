@@ -6,7 +6,9 @@
 #include <sstream>
 
 void GetSpeakerConfiguration(char* buffer, int bufferSize) {
-    CoInitialize(NULL);
+    HRESULT m_hr;
+
+    m_hr = CoInitialize(NULL);
 
     IMMDeviceEnumerator* pEnumerator = NULL;
     IMMDevice* pDevice = NULL;

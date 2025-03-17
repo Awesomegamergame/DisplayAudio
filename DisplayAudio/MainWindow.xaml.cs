@@ -26,7 +26,8 @@ namespace DisplayAudio
         public MainWindow()
         {
             InitializeComponent();
-            LoadSpeakerConfig();
+            try { LoadSpeakerConfig(); }
+            catch (Exception ex) { MessageBox.Show(ex.Message); App.Current.Shutdown(); return; }
             this.StateChanged += MainWindow_StateChanged;
             Loaded += OnWindowLoaded; // Register hotkey only after the window has loaded
             InitializeTrayIcon();
@@ -93,7 +94,8 @@ namespace DisplayAudio
             this.Show();
             this.WindowState = WindowState.Normal;
             this.Activate();
-            LoadSpeakerConfig();
+            try { LoadSpeakerConfig(); }
+            catch (Exception ex) { MessageBox.Show(ex.Message); App.Current.Shutdown(); return; }
             _notifyIcon.Visible = false;
         }
 
@@ -116,7 +118,8 @@ namespace DisplayAudio
         protected override void OnClosed(EventArgs e)
         {
             UnregisterHotKey(new System.Windows.Interop.WindowInteropHelper(this).Handle, HOTKEY_ID);
-            _notifyIcon.Dispose();
+            if(_notifyIcon != null)
+                _notifyIcon.Dispose();
             base.OnClosed(e);
         }
 
