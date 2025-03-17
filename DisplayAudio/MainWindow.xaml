@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:DisplayAudio"
         mc:Ignorable="d"
         ResizeMode="CanMinimize"
+        WindowState="Minimized"
         Title="MainWindow" Height="300" Width="800">
     <Grid>
         <TextBlock x:Name="SpeakerInfoText"
